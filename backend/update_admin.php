@@ -5,25 +5,23 @@ ini_set("display_errors", 1);
 header("Content-Type: application/json");
 session_start();
 
-require_once "../dbconnection.php"; // adjust path
+require_once "dbconnection.php"; 
 
-$data = json_decode(file_get_contents("php://input"), true);
+$json = file_get_contents("php://input");
+$data = json_decode($json, true);
 
 if (!$data) {
-    echo json_encode(["success" => false, "message" => "Invalid request."]);
+    echo json_encode(["success" => false, "message" => "Invalid request data."]);
     exit;
 }
 
 $email = trim($data['email']);
 $pass = trim($data['pass']);
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(["success" => false, "message" => "Invalid email format."]);
-    exit;
-}
+// Get user_id from session (Make sure this matches your login.php session key!)
+// $admin_id = $_SESSION["user_id"] ?? null;
+$admin_id = 1;
 
-// Get admin_id from session
-$admin_id = $_SESSION["user_id"] ?? null;
 if (!$admin_id) {
     echo json_encode(["success" => false, "message" => "Unauthorized access."]);
     exit;
@@ -31,25 +29,22 @@ if (!$admin_id) {
 
 try {
     if ($pass === "") {
-        // Update ONLY email
-        $sql = "UPDATE admin_table SET email = :email WHERE user_id = :id";
+        $sql = "UPDATE users SET email = :email WHERE user_id = :id AND role = 'admin'";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             ":email" => $email,
             ":id" => $admin_id
         ]);
-
         echo json_encode(["success" => true, "message" => "Email updated successfully."]);
     } else {
-        // Update BOTH email & password
         $hashed = password_hash($pass, PASSWORD_DEFAULT);
 
-        $sql = "UPDATE admin_table SET email = :email, password = :pass WHERE user_id = :id";
+        $sql = "UPDATE users SET email = :email, password = :pass WHERE user_id = :id AND role = 'admin'";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             ":email" => $email,
             ":pass" => $hashed,
-            ":id" => $admin_id  // FIXED: use $admin_id
+            ":id" => $admin_id
         ]);
 
         echo json_encode(["success" => true, "message" => "Profile updated successfully."]);

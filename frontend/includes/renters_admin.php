@@ -1,3 +1,3 @@
 <div class="bh-table-container2">
-    <?php include('../datatable/datatables_users.php'); ?>
+    <?php include('../vendor/datatables/datatables_users.php'); ?>
 </div>
