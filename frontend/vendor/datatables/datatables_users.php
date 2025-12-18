@@ -1,8 +1,10 @@
 <?php
-include('../dbconnection.php'); 
+include('../../backend/dbconnection.php'); 
 
-// Make sure to include `id` for deletion
-$sql = "SELECT user_id, email FROM users";
+$sql = "SELECT u.user_id, u.email, r.renterName 
+        FROM users u
+        LEFT JOIN renter_details r ON u.user_id = r.user_id
+        WHERE u.role = 'renter'";
 $stmt = $conn->prepare($sql);
 
 if ($stmt->execute()) {
@@ -115,7 +117,7 @@ $(document).ready(function () {
 
         if (confirm("Are you sure you want to delete this user?")) {
             $.ajax({
-                url: 'datatable/delete_listing_user.php',
+                url: '../vendor/datatables/delete_listing_user.php',
                 type: 'POST',
                 data: { id: id },
                 success: function(response) {
