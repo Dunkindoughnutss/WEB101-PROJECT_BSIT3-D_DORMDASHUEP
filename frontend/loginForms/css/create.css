@@ -1,0 +1,179 @@
+ body {
+     /* darken background image for readability */
+     background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../res/kalabaw3.jpeg');
+     background-repeat: no-repeat, no-repeat;
+     background-position: center center, center center;
+     background-size: cover, cover;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-top: 72px;
+     /* reserve space for fixed navbar */
+ }
+
+ .container {
+     width: 400px;
+     background: rgba(255, 255, 255, 0);
+     padding: 50px;
+     border-radius: 15px;
+     backdrop-filter: blur(10px);
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     opacity: 0.80;
+ }
+
+ /* small logo for forms */
+ .logo {
+     display: block;
+     margin: 0 auto 20px auto;
+     width: 96px;
+     height: auto;
+ }
+
+ /* Navbar styles */
+ .navbar {
+     background: linear-gradient(180deg, #034892, #114fac);
+     color: #fff;
+     padding: 12px 20px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 30px;
+ }
+
+
+ .navbar .nav-brand a {
+     color: #ffffff;
+     text-decoration: none;
+     font-weight: 700;
+     font-size: 18px;
+ }
+
+ .navbar .nav-links a {
+     color: #000000;
+     text-decoration: none;
+     margin-left: 20px;
+     font-weight: 700;
+     padding-right: 10px;
+     margin-right: 30px;
+ }
+
+ .navbar .nav-brand a {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ .navbar .nav-brand .nav-logo {
+     height: 48px;
+     width: auto;
+     border-radius: 6px;
+     object-fit: cover;
+ }
+
+ .navbar .nav-links a:hover {
+     text-decoration: underline;
+ }
+
+ @media (max-width: 520px) {
+     .navbar {
+         flex-direction: column;
+         gap: 8px;
+         align-items: flex-start;
+     }
+
+     .navbar .nav-links {
+         display: flex;
+         gap: 10px;
+         flex-wrap: wrap;
+     }
+ }
+
+ h1 {
+     text-align: center;
+     font-size: 28px;
+     color: #0066cc;
+     margin-bottom: 15px;
+     font-weight: 700;
+ }
+
+ h2 {
+     font-size: 20px;
+     margin-bottom: 15px;
+     text-align: center;
+ }
+
+ label {
+     display: block;
+     margin-top: 15px;
+     font-weight: bold;
+ }
+
+ input[type="text"],
+ input[type="email"],
+ input[type="password"] {
+     width: 100%;
+     padding: 10px;
+     margin-top: 5px;
+     margin-bottom: 10px;
+     border-radius: 5px;
+     border: 1px solid #ffffff;
+     color: black;
+
+ }
+
+ .btn-login {
+     display: block;
+     width: 100%;
+     padding: 12px;
+     background: #0066ff;
+     color: white;
+     border: none;
+     margin: 20px 0 0 0;
+     border-radius: 5px;
+     font-size: 16px;
+     cursor: pointer;
+     text-align: center;
+     text-decoration: none;
+     transition: background .18s ease, transform .06s ease;
+ }
+
+ .btn-login:hover {
+     background: linear-gradient(180deg, #0088ff, #0060e0);
+     transform: translateY(-1px);
+ }
+
+ .btn-login:active {
+     transform: translateY(0);
+ }
+
+ .social-container {
+     display: flex;
+     justify-content: center;
+     gap: 15px;
+     margin-top: 20px;
+ }
+
+ .social-btn {
+     width: 50px;
+     height: 50px;
+     background: white;
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 1px solid #ccc;
+     cursor: pointer;
+     font-size: 22px;
+ }
+
+ .links {
+     margin-top: 25px;
+     text-align: center;
+     font-size: 14px;
+     margin-top: 10px;
+ }
