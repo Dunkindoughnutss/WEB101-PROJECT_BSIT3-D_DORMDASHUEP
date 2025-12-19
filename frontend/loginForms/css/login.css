@@ -1,0 +1,240 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            /* darken the background image with a semi-transparent black overlay for better contrast */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../res/kalabaw3.jpeg');
+            background-repeat: no-repeat, no-repeat;
+            background-position: center center, center center;
+            background-size: cover, cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 72px;
+            /* reserve space for fixed navbar */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            background: rgba(217, 217, 217, 0.699);
+            padding: 32px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+            opacity: 0.80;
+            border-color: blue;
+            max-height: 90vh;
+        }
+
+        .logo {
+            display: block;
+            width: 160px;
+            /* increase size here */
+            height: auto;
+            margin: 0 auto 20px auto;
+            /* centers the logo */
+        }
+
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #0066cc;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            background: #fff;
+        }
+
+        .forgot {
+            font-size: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: block;
+            text-align: right;
+            cursor: pointer;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .btn-login {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(180deg, #007bff, #0056d6);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background .18s ease, transform .06s ease;
+        }
+
+        .btn-login:hover {
+            background: linear-gradient(180deg, #0088ff, #0060e0);
+            transform: translateY(-1px);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            color: rgb(15, 22, 214);
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        .links {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .links a {
+            text-decoration: underline;
+            color: #4000ff;
+        }
+
+        /* Toast notification styling (used by login.html) */
+        #toast {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            min-width: 220px;
+            padding: 12px 18px;
+            background: #28a745;
+            color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+            display: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        #toast.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Error variation for toast (used for invalid login) */
+        #toast.error {
+            background: #dc3545; /* red */
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                margin: 12px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background: linear-gradient(180deg, #034892, #114fac);
+            color: #fff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .nav-brand a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .navbar .nav-brand a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar .nav-brand .nav-logo {
+            height: 40px;
+            width: 40px;
+        }
+
+        .navbar .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: 600;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 520px) {
+            .navbar {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .navbar .nav-links {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }
