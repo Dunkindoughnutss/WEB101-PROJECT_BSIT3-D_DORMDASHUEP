@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UEP DormDash – Profile</title>
+
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="css/renters_profile.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="renters_home.html"><img class="icon" src="home_icon.png" alt="home"></a>
+        <a href="renters_map.html"><img class="icon" src="map_icon.png" alt="map"></a>
+        <a href="renters_activity.html"><img class="icon" src="activity_icon.png" alt="activity"></a>
+        <a href="renters_settings.html"><img class="icon" src="settings_icon.png" alt="settings"></a>
+        <a href="renters_profile.html"><img class="icon active" src="profile_icon.png" alt="profile"></a>
+
+        <div class="logout">
+            <a href="logout.html"><img class="icon" src="logout_icon.png" alt="logout"></a>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>UEP DORMDASH</h2>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- PROFILE CARD -->
+        <div class="profile-card">
+            <img src="default_avatar.png" alt="profile" class="avatar">
+            <h3>Mara Grace</h3>
+            <p>Renter</p>
+        </div>
+
+        <!-- ACCOUNT DETAILS -->
+        <div class="form-card">
+            <h3>Account Information</h3>
+
+            <label>Username</label>
+            <input type="text" value="maragrace123">
+
+            <label>Email</label>
+            <input type="email" value="maragrace@email.com">
+
+            <label>Contact Number</label>
+            <input type="text" value="09XXXXXXXXX">
+
+            <button class="btn save">Save Changes</button>
+        </div>
+
+        <!-- PASSWORD SETTINGS -->
+        <div class="form-card">
+            <h3>Change Password</h3>
+
+            <label>Current Password</label>
+            <input type="password">
+
+            <label>New Password</label>
+            <input type="password">
+
+            <label>Confirm New Password</label>
+            <input type="password">
+
+            <button class="btn save">Update Password</button>
+        </div>
+
+        <!-- EXTRA FEATURES -->
+        <div class="form-card danger">
+            <h3>Account Actions</h3>
+            <button class="btn logout-btn">Log Out</button>
+            <button class="btn delete">Deactivate Account</button>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script>
+        document.querySelectorAll(".save").forEach(btn => {
+            btn.onclick = () => {
+                alert("Changes saved successfully!");
+            };
+        });
+
+        document.querySelector(".delete").onclick = () => {
+            if (confirm("Are you sure you want to deactivate your account?")) {
+                alert("Account deactivated (demo only)");
+            }
+        };
+
+        document.querySelector(".logout-btn").onclick = () => {
+            window.location.href = "logout.html";
+        };
+    </script>
+
+</body>
+</html>
