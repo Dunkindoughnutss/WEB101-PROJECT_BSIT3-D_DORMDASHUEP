@@ -1,0 +1,146 @@
+/* SEARCH HEADER */
+.search-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-search-bar {
+    display: flex;
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 5px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.main-search-bar input {
+    flex: 1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    outline: none;
+}
+
+.btn-search {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* LAYOUT */
+.search-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.filter-panel {
+    width: 250px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    height: fit-content;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.filter-group select, .filter-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 5px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal !important;
+    font-size: 12px !important;
+    margin-bottom: 5px;
+}
+
+.btn-apply {
+    width: 100%;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* RESULTS GRID */
+.results-area {
+    flex: 1;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.result-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+}
+
+.res-image {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+}
+
+.res-info {
+    padding: 15px;
+}
+
+.res-info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.res-price {
+    color: #007bff;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.res-loc {
+    font-size: 12px;
+    color: #666;
+}
+
+.res-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
