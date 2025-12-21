@@ -1,0 +1,140 @@
+/* FORM HEADER */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.form-header h1 { font-size: 28px; margin: 0; }
+.form-header b { color: #007bff; }
+
+/* SECTIONS */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h3 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* IMAGE UPLOAD */
+.image-upload-container {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0 20px 0;
+}
+
+.upload-box {
+    width: 150px;
+    height: 120px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: #888;
+}
+
+.image-preview {
+    width: 200px;
+    height: 120px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* INPUT GROUPS */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-group textarea {
+    height: 80px;
+    resize: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+/* CHECKBOX GRID */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.check-column h4 {
+    margin-top: 0;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.check-column label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+/* CONFIRMATION & ACTIONS */
+.confirmation {
+    margin: 30px 0;
+    font-size: 13px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-cancel {
+    padding: 10px 30px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    padding: 10px 40px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
