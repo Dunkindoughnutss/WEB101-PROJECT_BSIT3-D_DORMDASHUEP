@@ -1,0 +1,142 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* BACKGROUND IMAGE (Matches Group 221.jpg) */
+.main-container {
+    margin-left: 70px;
+    height: 100vh;
+    background: url('../assets/campus_bg.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 70px;
+    background: #fff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.nav-icons, .bottom-icons, .logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.sidebar .icon {
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar a.active {
+    background-color: #007bff;
+    border-radius: 8px;
+}
+
+.sidebar a.active .icon {
+    filter: brightness(0) invert(1);
+}
+
+/* HEADER */
+.header {
+    background: #77b7ff;
+    padding: 10px 40px;
+    color: black;
+    font-weight: bold;
+}
+
+.header h2 { margin: 0; font-size: 1.2rem; }
+
+/* GLASS CONTENT CARD */
+.content-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    margin: auto;
+    width: 85%;
+    max-height: 80vh;
+    border-radius: 40px;
+    padding: 40px;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.content-header h1 { margin: 0; font-size: 32px; font-weight: bold; }
+.listing-count { color: #555; font-size: 18px; }
+
+.mail-btn {
+    width: 50px;
+    cursor: pointer;
+}
+
+/* LISTINGS GRID */
+.listings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.listing-card {
+    border: 1px solid #ccc;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.listing-image {
+    height: 200px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.listing-details {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.details-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.details-top h3 { margin: 0; text-transform: capitalize; }
+
+.actions img {
+    width: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.actions img:hover { opacity: 1; }

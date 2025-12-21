@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owner Profile - UEP DORMDASH</title>
+    <link rel="stylesheet" href="css/owner_home.css">
+    <link rel="stylesheet" href="css/owner_profile.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-section">
+            <img src="logo.png" alt="UEP" class="logo-top">
+        </div>
+        
+        <div class="nav-icons">
+            <a href="owner_profile.html" class="active"><img class="icon" src="profile_icon.png" alt="profile"></a>
+            <a href="owner_home.html"><img class="icon" src="home_icon.png" alt="home"></a>
+            <a href="owner_search.html"><img class="icon" src="search_icon.png" alt="search"></a>
+            <a href="owner_map.html"><img class="icon" src="map_icon.png" alt="map"></a>
+            <a href="owner_listings.html"><img class="icon" src="edit_icon.png" alt="listings"></a>
+            <a href="owner_manage.html"><img class="icon" src="manage_icon.png" alt="manage"></a>
+            <a href="owner_settings.html"><img class="icon" src="settings_icon.png" alt="settings"></a>
+        </div>
+
+        <div class="bottom-icons">
+            <a href="owner_help.html"><img class="icon" src="help_icon.png" alt="help"></a>
+            <a href="owner_logout.html"><img class="icon" src="logout_icon.png" alt="logout"></a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="header">
+            <h2>UEP DORMDASH</h2>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div>
+                    <h1>Profile Settings</h1>
+                    <p class="listing-count">Manage your account and business details</p>
+                </div>
+            </div>
+
+            <form class="profile-form">
+                <div class="profile-layout">
+                    <div class="profile-aside">
+                        <div class="avatar-upload">
+                            <div class="avatar-preview" style="background-image: url('default_avatar.jpg');"></div>
+                            <button type="button" class="btn-secondary">Change Photo</button>
+                        </div>
+                        <div class="input-group">
+                            <label>Username</label>
+                            <input type="text" value="Owner_User2024" placeholder="Enter username">
+                        </div>
+                    </div>
+
+                    <div class="profile-main">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" value="Maria Clara" placeholder="Full name">
+                            </div>
+                            <div class="input-group">
+                                <label>Email Address</label>
+                                <input type="email" value="mclara@email.com" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Contact Number</label>
+                                <input type="text" value="09123456789" placeholder="Phone number">
+                            </div>
+                            <div class="input-group">
+                                <label>Business Name (Optional)</label>
+                                <input type="text" value="Clara's Housing" placeholder="Dormitory name">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Home Address</label>
+                            <input type="text" value="UEP Zone 1, Catarman" placeholder="Full address">
+                        </div>
+
+                        <div class="password-section">
+                            <h3>Security</h3>
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Current Password</label>
+                                    <input type="password" placeholder="••••••••">
+                                </div>
+                                <div class="input-group">
+                                    <label>New Password</label>
+                                    <input type="password" placeholder="Leave blank to keep current">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="reset" class="btn-cancel">Reset Changes</button>
+                            <button type="submit" class="btn-save">Save Information</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
