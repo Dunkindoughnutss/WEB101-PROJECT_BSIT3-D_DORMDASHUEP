@@ -1,6 +1,5 @@
 <?php
-// Ensure this path is correct based on where this file is saved
-include('../../../backend/dbconnection.php');
+require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
 
 if (isset($_POST['id']) && !empty($_POST['id'])) {
     $id = intval($_POST['id']); 

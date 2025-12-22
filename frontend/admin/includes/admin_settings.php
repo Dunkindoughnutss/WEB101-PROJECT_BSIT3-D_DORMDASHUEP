@@ -33,7 +33,7 @@
         </div>
 
  <?php
-include '../../backend/dbconnection.php'; 
+require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
 
 try {
     $db_status = ($conn instanceof PDO) ? "Online" : "Offline";
