@@ -1,0 +1,63 @@
+/* Centered Logout Layout */
+.logout-box {
+    text-align: center;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout-box h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.logout-box p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Button Container */
+.logout-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Confirm Logout Button (Red) */
+.btn-confirm {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+}
+
+.btn-confirm:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+/* Stay Logged In Button (Blue) */
+.btn-stay {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-stay:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}

@@ -1,0 +1,49 @@
+/* FAQ Styling */
+.faq-section {
+    margin-top: 20px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    transition: 0.3s;
+}
+
+.faq-item:hover {
+    background: rgba(255, 255, 255, 0.5);
+    padding-left: 10px;
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    color: #007bff; /* Primary Blue matches active nav */
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Contact Cards Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.contact-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.contact-card h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+}
