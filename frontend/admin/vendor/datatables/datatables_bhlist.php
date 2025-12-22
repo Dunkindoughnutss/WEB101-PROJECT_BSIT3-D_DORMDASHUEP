@@ -117,7 +117,7 @@ $(document).ready(function () {
 
         if (confirm("Are you sure you want to delete this listing?")) {
             $.ajax({
-                url: '../vendor/datatables/delete_listing_bh.php', // PHP file to handle deletion
+                url: 'vendor/datatables/delete_listing_bh.php', // PHP file to handle deletion
                 type: 'POST',
                 data: { id: id },
                 success: function(response) {

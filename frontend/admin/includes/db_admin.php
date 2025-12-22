@@ -14,7 +14,7 @@ try {
 
 $total_renters = 0;
 try {
-    $stmt = $conn->query("SELECT COUNT(*) AS total_renters FROM renter_details");
+    $stmt = $conn->query("SELECT COUNT(*) AS total_renters FROM users WHERE role = 'renter'");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row) {
         $total_renters = $row['total_renters'];
