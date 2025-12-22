@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Listing - UEP DORMDASH</title>
+    <link rel="stylesheet" href="css/owner_home.css">
+    <link rel="stylesheet" href="css/owner_add_listing.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-section">
+            <img src="logo.png" alt="UEP" class="logo-top">
+        </div>
+        
+        <div class="nav-icons">
+            <a href="owner_profile.html"><img class="icon" src="profile_icon.png" alt="profile"></a>
+            <a href="owner_home.html"><img class="icon" src="home_icon.png" alt="home"></a>
+            <a href="owner_search.html"><img class="icon" src="search_icon.png" alt="search"></a>
+            <a href="owner_map.html"><img class="icon" src="map_icon.png" alt="map"></a>
+            <a href="owner_add_listing.html" class="active"><img class="icon" src="edit_icon.png" alt="listings"></a>
+            <a href="owner_manage.html"><img class="icon" src="manage_icon.png" alt="manage"></a>
+            <a href="owner_settings.html"><img class="icon" src="settings_icon.png" alt="settings"></a>
+        </div>
+
+        <div class="bottom-icons">
+            <a href="owner_help.html"><img class="icon" src="help_icon.png" alt="help"></a>
+            <a href="owner_logout.html"><img class="icon" src="logout_icon.png" alt="logout"></a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="header">
+            <h2>UEP DORMDASH</h2>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="form-header">
+                <div>
+                    <h1>Add new <b>Listing</b></h1>
+                </div>
+                <div class="header-icon">
+                    <img src="box_plus_icon.png" alt="icon" width="50">
+                </div>
+            </div>
+
+            <form class="listing-form">
+                <section class="form-section">
+                    <h3>Owner Details</h3>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Owner's full name">
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Mobile Number</label>
+                            <input type="text" placeholder="Contact number">
+                        </div>
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Email address">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h3>Boarding House Details</h3>
+                    
+                    <label>Add images</label>
+                    <div class="image-upload-container">
+                        <div class="upload-box">
+                            <img src="image_placeholder.png" alt="upload">
+                            <span>click to add images</span>
+                        </div>
+                        <div class="image-preview" style="background-image: url('room_preview.jpg');"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Listing Information Title</label>
+                        <input type="text" placeholder="e.g. Parcon Dormitory">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Monthly Rent</label>
+                            <input type="text" placeholder="₱">
+                        </div>
+                        <div class="input-group">
+                            <label>Available Rooms</label>
+                            <input type="number" value="5">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Address</label>
+                        <input type="text" placeholder="Full address">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Description</label>
+                        <textarea placeholder="Tell us more about your boarding house..."></textarea>
+                    </div>
+                </section>
+
+                <div class="checkbox-grid">
+                    <div class="check-column">
+                        <h4>Room Type</h4>
+                        <label><input type="checkbox" checked> Single Room</label>
+                        <label><input type="checkbox"> with private bathroom</label>
+                        <label><input type="checkbox"> Studio Type</label>
+                        <label><input type="checkbox"> Shared Room</label>
+                        <label><input type="checkbox"> with aircon</label>
+                    </div>
+
+                    <div class="check-column">
+                        <h4>Amenities</h4>
+                        <label><input type="checkbox" checked> WiFi</label>
+                        <label><input type="checkbox"> Kitchen Area</label>
+                        <label><input type="checkbox"> Laundry Area</label>
+                        <label><input type="checkbox"> Parking Space</label>
+                        <label><input type="checkbox"> Study Area</label>
+                    </div>
+
+                    <div class="check-column">
+                        <h4>Preferred Gender</h4>
+                        <label><input type="radio" name="gender"> Male only</label>
+                        <label><input type="radio" name="gender" checked> Female only</label>
+                        <label><input type="radio" name="gender"> Mixed</label>
+                    </div>
+
+                    <div class="check-column">
+                        <h4>Curfew Policy</h4>
+                        <label><input type="radio" name="curfew" checked> No Curfew</label>
+                        <label><input type="radio" name="curfew"> With Curfew</label>
+                        <label><input type="radio" name="curfew"> Doesn't Matter</label>
+                    </div>
+                </div>
+
+                <div class="confirmation">
+                    <label><input type="checkbox"> I confirm that all information provided is true and accurate.</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='owner_home.html'">Cancel</button>
+                    <button type="submit" class="btn-submit">Appoint</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
