@@ -1,0 +1,155 @@
+/* Centering Logic with minimal side spacing */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 40px; /* 40px provides that "1-tab" visual gap */
+}
+
+/* Enlarged Container */
+.settings-container-large {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    width: 95%; /* Occupies most of the screen width */
+    max-width: 1400px; /* Limits on ultra-wide screens but stays large */
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+}
+
+.settings-header {
+    text-align: left; /* Switched to left for a dashboard feel */
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+}
+
+.settings-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #222;
+    font-weight: 800;
+}
+
+.settings-header p {
+    color: #666;
+    margin-top: 8px;
+    font-size: 1.1rem;
+}
+
+/* Wide Grid Layout (3 Columns to fill the large space) */
+.settings-grid-wide {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.settings-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.card-label {
+    font-size: 0.9rem;
+    margin: 0 0 20px 0;
+    color: #4A90E2;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+/* Rows & Switches */
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.switch {
+    position: relative;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ddd;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; width: 16px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: #4A90E2; }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* Buttons */
+.btn-action {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: #fcfcfc;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-action:hover {
+    background: #f4f8ff;
+    border-color: #4A90E2;
+    color: #4A90E2;
+    transform: translateX(5px);
+}
+
+.btn-action.danger {
+    color: #e74c3c;
+}
+
+.btn-action.danger:hover {
+    background: #fff5f5;
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.system-footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #aaa;
+    font-size: 0.85rem;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Responsive Fix */
+@media (max-width: 1100px) {
+    .settings-grid-wide { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .settings-grid-wide { grid-template-columns: 1fr; }
+    .settings-container-large { padding: 30px; }
+}
