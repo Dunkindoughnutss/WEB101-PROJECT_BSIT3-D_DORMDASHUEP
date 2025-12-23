@@ -17,18 +17,18 @@
         </div>
 
         <div class="nav-icons">
-            <a href="owner_profile.html"><img class="icon" src="../icons/circle-user-round.svg" alt="profile"></a>
-            <a href="owner_home.html"><img class="icon" src="../icons/house.svg" alt="home"></a>
-            <a href="owner_search.html"><img class="icon" src="../icons/search.svg" alt="search"></a>
-            <a href="owner_map.html"><img class="icon" src="../icons/map-pin-house.svg" alt="map"></a>
-            <a href="owner_add_listing.html" class="active"><img class="icon" src="../icons/pencil-line.svg" alt="listings"></a>
-            <a href="owner_manage.html"><img class="icon" src="../icons/check-check.svg" alt="manage"></a>
-            <a href="owner_settings.html"><img class="icon" src="../icons/settings.svg" alt="settings"></a>
+            <a href="owner_profile.html"><img class="icon" src="/icons/circle-user-round.svg" alt="profile"></a>
+            <a href="owner_home.html"><img class="icon" src="/frontend/icons/house.svg"alt="home"></a>
+            <a href="owner_search.html"><img class="icon" src="/frontend/icons/search.svg" alt="search"></a>
+            <a href="owner_map.html"><img class="icon" src="/frontend/icons/pencil-line.svg" alt="map"></a>
+            <a href="owner_add_listing.html" class="active"><img class="icon" src="/frontend/icons/check-check.svg" alt="listings"></a>
+            <a href="owner_manage.html"><img class="icon" src="/frontend/icons/message-circle-question-mark.svg" alt="manage"></a>
+            <a href="owner_settings.html"><img class="icon" src="/frontend/icons/settings.svg" alt="settings"></a>
         </div>
 
         <div class="bottom-icons">
-            <a href="owner_help.html"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
-            <a href="owner_logout.html"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
+            <a href="owner_help.html"><img class="icon" src="help_icon.png" alt="help"></a>
+            <a href="owner_logout.html"><img class="icon" src="logout_icon.png" alt="logout"></a>
         </div>
     </div>
 
@@ -43,11 +43,11 @@
                     <h1>Add new <b>Listing</b></h1>
                 </div>
                 <div class="header-icon">
-                    <img src="../icons/pencil-line.svg" alt="icon" width="50">
+                    <img src="box_plus_icon.png" alt="icon" width="50">
                 </div>
             </div>
 
-            <form class="listing-form" action="/php/insert_listing.php" method="POST" enctype="multipart/form-data">
+            <form class="listing-form" action="../cons/insert_listing.php" method="POST" enctype="multipart/form-data">
 
                 <section class="form-section">
                     <h3>Owner Details</h3>
@@ -145,8 +145,9 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" class="btn-cancel" onclick="window.location.href='owner_home.html'">Cancel</button>
-                    <button type="submit" class="btn-submit">Add Listing</button>
+                    <button type="button" class="btn-cancel"
+                        onclick="window.location.href='owner_home.html'">Cancel</button>
+                    <button type="submit" class="btn-submit">Appoint</button>
                 </div>
             </form>
         </div>
