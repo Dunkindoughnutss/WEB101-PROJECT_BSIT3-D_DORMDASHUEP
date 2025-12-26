@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background-image: url(res/kalabaw2.jpeg);
+            background-image: url(../../res/kalabaw2.jpeg);
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;  
@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav class="navbar">
         <div class="nav-brand">
             <a href="homepage.php">
-                <img src="res/logo1.png" alt="logo" class="nav-logo">
+                <img src="../../res/logo1.png" alt="logo" class="nav-logo">
                 <span>UEP DORMDASH</span>
             </a>
         </div>

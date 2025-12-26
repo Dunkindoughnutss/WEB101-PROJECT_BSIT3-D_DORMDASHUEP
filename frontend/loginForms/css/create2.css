@@ -1,0 +1,160 @@
+/* Create Account Page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('../../res/kalabaw3.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background: rgba(217, 217, 217, 0.699); 
+    padding: 32px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+.logo {
+    display: block;
+    width: 160px; 
+    height: auto;
+    margin: 0 auto 20px auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #0066cc;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    background: #fff;
+}
+
+.btn-login {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(180deg, #007bff, #0056d6);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background .18s ease;
+}
+
+.links {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.links a {
+    text-decoration: underline;
+    color: #4000ff;
+    font-weight: bold;
+}
+
+/* Navbar of this page */
+        .navbar {
+            background: linear-gradient(180deg, #034892, #114fac);
+            color: #fff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .nav-brand a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .navbar .nav-brand a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar .nav-brand .nav-logo {
+            height: 40px;
+            width: 40px;
+        }
+
+        .navbar .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: 600;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 520px) {
+            .navbar {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .navbar .nav-links {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }
