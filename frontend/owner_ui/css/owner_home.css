@@ -15,46 +15,91 @@ body, html {
     flex-direction: column;
 }
 
-/* SIDEBAR */
+/* ===== SIDEBAR ===== */
 .sidebar {
     width: 70px;
-    background: #fff;
+    background: #ffffff;
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
+
+    padding: 12px 0;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     z-index: 100;
 }
 
-.nav-icons, .bottom-icons, .logo-section {
+/* ===== LOGO ===== */
+.logo-section {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.sidebar .logo-section .logo-top {
+    width: 40px;
+    height: 40px;
+}
+
+/* ===== NAV ICONS (MIDDLE) ===== */
+.nav-icons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
+    flex-grow: 1;
+    padding-top: 20px;
 }
 
+/* ===== BOTTOM ICONS ===== */
+.bottom-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 25px; /* 👈 lifts them up */
+}
+
+
+/* ===== LINKS ===== */
+.sidebar a {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+/* ===== ICON ===== */
 .sidebar .icon {
-    width: 24px;
-    height: 24px;
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.3s;
+    width: 22px;
+    height: 22px;
 }
 
+/* ===== HOVER ===== */
+.sidebar a:hover {
+    background-color: #f1f5f9;
+    transform: scale(1.05);
+}
+
+/* ===== ACTIVE ===== */
 .sidebar a.active {
     background-color: #007bff;
-    border-radius: 8px;
 }
 
 .sidebar a.active .icon {
     filter: brightness(0) invert(1);
 }
+
 
 /* HEADER */
 .header {
