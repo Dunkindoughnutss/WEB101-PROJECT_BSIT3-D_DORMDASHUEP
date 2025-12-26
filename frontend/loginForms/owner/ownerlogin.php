@@ -70,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<div class="nav-links">
 		<a href="../homepage.php">Home</a>
 		<a href="../renter/login.php">Renter Login</a>
-		<a href="ownerlogin.php">Owner Login</a>
 	</div>
 </nav>
 
