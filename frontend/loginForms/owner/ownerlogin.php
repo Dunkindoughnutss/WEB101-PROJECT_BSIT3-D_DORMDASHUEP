@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['role'] = $user['role'];
             
-            header('Location: ../homepage.php');
+            header('Location: ../../owner_ui/owner_home.php');
             exit;
         } else {
             header('Location: ownerlogin.php?error=invalid_credentials');
@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <nav class="navbar">
 	<div class="nav-brand"><a href="../admin_login.php"><img src="../../res/logo1.png" alt="UEP logo" class="nav-logo"/><span>UEP DORMDASH</span></a></div>
 	<div class="nav-links">
-		<a href="../homepage.php">Home</a>
 		<a href="../renter/login.php">Renter Login</a>
 	</div>
 </nav>
