@@ -34,7 +34,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
             <div class="bottom-icons">
                 <a href="owner_help.php" class="active"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
-                <a href="owner_logout.php"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
             </div>
         </div>
 

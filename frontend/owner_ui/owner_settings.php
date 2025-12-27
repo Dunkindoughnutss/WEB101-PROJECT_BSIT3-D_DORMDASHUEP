@@ -1,16 +1,14 @@
 <?php
-$current_page = basename($_SERVER['PHP_SELF']);
-
-// 
 session_start();
 
+// 1. Security Gatekeeper
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'owner') {
-    // Exit owner_ui, enter loginForms/owner/
+    // Navigate out of owner_ui and into loginForms/owner/
     header("Location: ../loginForms/owner/ownerlogin.php");
     exit();
 }
+
 $current_page = basename($_SERVER['PHP_SELF']);
-//
 ?>
 
 <!DOCTYPE html>
@@ -91,30 +89,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
             color: #c53030;
             border-color: #feb2b2;
         }
-
-        /* LOGOUT BUTTON */
-        .logout-container {
-            margin-top: 20px;
-            padding-top: 10px;
-        }
-
-        .btn-logout {
-            background: #fff;
-            color: #e53e3e;
-            border: 2px solid #fed7d7;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-logout:hover {
-            background: #e53e3e;
-            color: #fff;
-            border-color: #e53e3e;
-        }
     </style>
 </head>
 
@@ -153,18 +127,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <a href="owner_help.php" class="<?= ($current_page == 'owner_help.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/message-circle-question-mark.svg">
             </a>
-            <a href="logout.php">
-                <img class="icon" src="../icons/log-out.svg">
+            <a href="javascript:void(0);" onclick="handleLogout();">
+                <img class="icon" src="../icons/log-out.svg" alt="Logout">
             </a>
         </div>
-
-
-    </div>
-
-    <div class="main-container">
-
+    </div> <div class="main-container">
         <div class="header">
-            <h2>UEP DORMDASH</span></h2>
+            <h2>UEP DORMDASH</h2>
         </div>
 
         <div class="content-wrapper">
@@ -176,7 +145,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
             </div>
 
             <div class="settings-grid">
-
                 <div class="settings-section">
                     <h3>App Preferences</h3>
                     <div class="setting-row">
@@ -211,21 +179,14 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <div class="settings-section">
                     <h3>Help & Support</h3>
                     <button class="btn faq">FAQs</button>
-                    <button class="btn" onclick="location.href='owner_help.html'">Contact Support</button>
+                    <button class="btn" onclick="location.href='owner_help.php'">Contact Support</button>
                     <button class="btn" onclick="alert('Opening report ticket...')">Report a Problem</button>
                 </div>
 
-                <div class="settings-section system-info">
-                    <h3>System</h3>
-                    <div class="logout-container">
-                        <button class="btn-logout" onclick="handleLogout()">Logout</button>
-                    </div>
-                    <div style="margin-top: 20px; color: #a0aec0; font-size: 0.85rem;">
-                        <p><strong>UEP DormDash</strong> v1.0.0</p>
-                        <p>© 2025 UEP DormDash</p>
-                    </div>
+                <div style="margin-top: 20px; color: #a0aec0; font-size: 0.85rem;">
+                    <p><strong>UEP DormDash</strong> v1.0.0</p>
+                    <p>© 2025 UEP DormDash</p>
                 </div>
-
             </div>
         </div>
     </div>
@@ -245,24 +206,24 @@ $current_page = basename($_SERVER['PHP_SELF']);
         // Real-time Preference Feedback
         function savePreference(type) {
             console.log(type + " setting updated.");
-            // Add AJAX here later to save to DB
         }
 
         // Dark Mode Toggle Placeholder
         function toggleDarkMode(element) {
             if(element.checked) {
                 alert("Dark Mode currently unavailable.");
+                element.checked = false; // Reset switch
             }
         }
 
-        //  Clear History Confirmation
+        // Clear History Confirmation
         function confirmClearHistory() {
             if(confirm("Are you sure you want to clear your search history? This cannot be undone.")) {
                 alert("Search history cleared.");
             }
         }
 
-        // Functional Logout
+        // Logout Function
         function handleLogout() {
             if(confirm("Log out of UEP DormDash?")) {
                 window.location.href = 'logout.php';
