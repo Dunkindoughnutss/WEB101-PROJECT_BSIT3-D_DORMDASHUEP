@@ -55,8 +55,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <a href="owner_help.php" class="<?= ($current_page == 'owner_help.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/message-circle-question-mark.svg">
             </a>
-            <a href="logout.php">
-                <img class="icon" src="../icons/log-out.svg">
+            <a href="javascript:void(0);" onclick="handleLogout();">
+                <img class="icon" src="../icons/log-out.svg" alt="Logout">
             </a>
         </div>
 
@@ -209,6 +209,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
         function closeHistory() {
             document.getElementById('historyModal').style.display = 'none';
+        }
+
+        // Logout Function
+        function handleLogout() {
+            if(confirm("Log out of UEP DormDash?")) {
+                window.location.href = 'logout.php';
+            }
         }
     </script>
 </body>

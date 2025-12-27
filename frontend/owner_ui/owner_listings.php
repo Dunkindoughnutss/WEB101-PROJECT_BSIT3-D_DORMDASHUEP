@@ -122,7 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="bottom-icons">
             <a href="owner_help.php"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
-            <a href="owner_logout.php"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
+            <a href="javascript:void(0);" onclick="handleLogout();">
+                <img class="icon" src="../icons/log-out.svg" alt="Logout">
+            </a>
         </div>
     </div>
 
@@ -284,6 +286,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
 
     <script src="js/img_prev.js"></script>
+
+    <script>
+        // Logout Function
+        function handleLogout() {
+            if(confirm("Log out of UEP DormDash?")) {
+                window.location.href = 'logout.php';
+            }
+        }
+    </script>
 
 
 </body>

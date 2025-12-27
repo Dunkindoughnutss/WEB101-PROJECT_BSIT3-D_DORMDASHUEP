@@ -16,7 +16,6 @@
         </a>
     </div>
     <div class="nav-links">
-        <a href="../homepage.php">Home</a>
         <a href="../renter/login.php">Renter Login</a>
     </div>
 </nav>
