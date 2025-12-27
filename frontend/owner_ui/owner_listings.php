@@ -164,38 +164,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                 </section>
+                
+                    <section class="form-section">
+                        <h3>Boarding House Details</h3>
 
-                <section class="form-section">
-                    <h3>Boarding House Details</h3>
+                        <!-- IMAGE UPLOAD -->
+                        <label>Add image</label>
 
-                    <!-- IMAGE UPLOAD -->
-                    <label>Add images <small>(minimum 4)</small></label>
+                        <div class="image-upload-container">
+                            <!-- Single file input -->
+                            <input type="file" id="images" name="images" accept="image/*" required>
 
-                    <div class="image-upload-container">
+                            <!-- Clickable upload box -->
+                            <div class="upload-box" onclick="document.getElementById('images').click()">
+                                <span>Click to add image</span>
+                            </div>
 
+                            <!-- Preview area -->
+                            <div id="previewContainer" class="preview-grid"></div>
 
-                        <!-- URUPAYON INE DD, NAMOMOVE AN PREVIEW TAG, TAS ERROR SA JS -->
-                        <!-- okay na sha  -->
-
-                        <!-- Hidden file input -->
-                        <input
-                            type="file"
-                            id="images"
-                            name="images[]"
-                            accept="image/*"
-                            multiple
-                            hidden>
-
-                        <!-- Clickable upload box -->
-                        <div class="upload-box" onclick="document.getElementById('images').click()">
-                            <img src="image_placeholder.png" alt="upload">
-                            <span>Click to add images</span>
+                            <!-- Hidden input for uploaded image path -->
+                            <div id="uploadedImagesContainer"></div>
                         </div>
+                    </section>
 
-                        <!-- Preview area -->
-                        <div id="previewContainer" class="preview-grid"></div>
-
-                    </div>
 
                     <!-- LISTING INFORMATION -->
                     <div class="input-group">
@@ -264,6 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="button" class="btn-cancel" onclick="window.location.href='owner_home.php'">Cancel</button>
                     <button type="submit" name="submit" class="btn-submit">Add Listing</button>
                 </div>
+
             </form>
         </div>
     </div>

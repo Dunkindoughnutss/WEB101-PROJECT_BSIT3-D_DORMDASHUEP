@@ -2,19 +2,22 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$BASE_URL = '/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/';
+
+
 
 require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
 
 // IMAGE DISPLAY TEST
 
-$test_path = "../../uploads/listings/";
-if (is_dir($test_path)) {
-    echo "✅ PHP can see the folder.<br>";
-    $files = glob($test_path . "*");
-    echo "Found " . count($files) . " files in the folder.";
-} else {
-    echo "❌ PHP CANNOT find the folder at: " . realpath($test_path);
-}
+// $test_path = "../../uploads/listings/";
+// if (is_dir($test_path)) {
+//     echo "✅ PHP can see the folder.<br>";
+//     $files = glob($test_path . "*");
+//     echo "Found " . count($files) . " files in the folder.";
+// } else {
+//     echo "❌ PHP CANNOT find the folder at: " . realpath($test_path);
+// }
 
 // ====================\\\
 
@@ -122,14 +125,26 @@ try {
                 <?php if ($totalListings > 0): ?>
                     <?php foreach ($listings as $row): ?>
                         <div class="listing-card">
+                            <?php
+                            // Define the project folder name clearly
+                            $projectRoot = "/WEB101-PROJECT_BSIT3-D_DORMDASHUEP";
 
-                            <div class="listing-image"
-                                style="background-image: url('../../uploads/listings/<?= basename(htmlspecialchars($row['image_path'])); ?>');">
+                            // Fallback logic
+                            $imageName = (!empty($row['image_path'])) ? $row['image_path'] : 'default.jpg';
+
+                            // Construct the path from the server root
+                            $displayPath = $projectRoot . "/uploads/listings/" . $imageName;
+                            ?>
+
+                            <div class="listing-image" style="background-image: url('<?= htmlspecialchars($displayPath); ?>');">
                             </div>
+                            <small><?= $row['image_path']; ?></small>
+
 
                             <div class="listing-details">
                                 <div class="details-top">
                                     <h3><?= htmlspecialchars($row['title']); ?></h3>
+
 
                                     <div class="actions">
                                         <a href="edit_listing.php?id=<?= $row['bh_id']; ?>">
