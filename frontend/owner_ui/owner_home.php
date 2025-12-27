@@ -5,6 +5,21 @@ ini_set('display_errors', 1);
 
 include_once "../../backend/dbconnection.php";
 
+
+
+// IMAGE DISPLAY TEST
+
+$test_path = "../../uploads/listings/";
+if (is_dir($test_path)) {
+    echo "✅ PHP can see the folder.<br>";
+    $files = glob($test_path . "*");
+    echo "Found " . count($files) . " files in the folder.";
+} else {
+    echo "❌ PHP CANNOT find the folder at: " . realpath($test_path);
+}
+
+// ====================\\\
+
 // Active sidebar
 $current_page = basename($_SERVER['PHP_SELF']);
 
@@ -12,7 +27,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
 $user_id = 1;
 
 try {
-    $stmt = $conn->prepare("SELECT * FROM bh_listing WHERE user_id = :user_id");
+    // We join bh_listing with bh_images to get the first image for each listing
+    $stmt = $conn->prepare("
+        SELECT l.*, 
+               (SELECT image_path FROM bh_images WHERE bh_id = l.bh_id LIMIT 1) AS image_path 
+        FROM bh_listing l 
+        WHERE l.user_id = :user_id
+    ");
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
 
@@ -105,7 +126,7 @@ try {
                         <div class="listing-card">
 
                             <div class="listing-image"
-                                style="background-image: url('<?= htmlspecialchars($row['image_path'] ?? 'default.jpg'); ?>');">
+                                style="background-image: url('../../uploads/listings/<?= basename(htmlspecialchars($row['image_path'])); ?>');">
                             </div>
 
                             <div class="listing-details">
