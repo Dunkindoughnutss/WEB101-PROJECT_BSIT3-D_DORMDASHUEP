@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search Boarding Houses - UEP DORMDASH</title>
-    <link rel="stylesheet" href="css/owner_home.css">
-    <link rel="stylesheet" href="css/owner_search.css">
+    <title>Search - UEP DORMDASH</title>
+    <link rel="stylesheet" href="css/renter_home.css">
+    <link rel="stylesheet" href="css/renter_search.css">
 </head>
 <body>
 
@@ -15,32 +15,28 @@
         </div>
         
         <div class="nav-icons">
-            <a href="owner_profile.html"><img class="icon" src="../icons/circle-user-round.svg" alt="profile"></a>
-            <a href="owner_home.html"><img class="icon" src="../icons/house.svg" alt="home"></a>
-            <a href="owner_search.html" class="active"><img class="icon" src="../icons/search.svg" alt="search"></a>
-            <a href="owner_map.html"><img class="icon" src="../icons/map-pin-house.svg" alt="map"></a>
-            <a href="owner_listings.html"><img class="icon" src="../icons/pencil-line.svg" alt="listings"></a>
-            <a href="owner_manage.html"><img class="icon" src="../icons/check-check.svg" alt="manage"></a>
-            <a href="owner_settings.html"><img class="icon" src="../icons/settings.svg" alt="settings"></a>
+            <a href="renter_profile.html" class="tab-link"><img class="icon" src="../icons/circle-user-round.svg" alt="profile"></a>
+            <a href="renter_home.html" class="tab-link"><img class="icon" src="../icons/house.svg" alt="home"></a>
+            <a href="renter_search.html" class="tab-link active"><img class="icon" src="../icons/search.svg" alt="search"></a>
+            <a href="renter_map.html" class="tab-link"><img class="icon" src="../icons/map-pin-house.svg" alt="map"></a>
+            <a href="renter_activity.html" class="tab-link"><img class="icon" src="../icons/check-check.svg" alt="activity"></a>
+            <a href="renter_settings.html" class="tab-link"><img class="icon" src="../icons/settings.svg" alt="settings"></a>
         </div>
 
         <div class="bottom-icons">
-            <a href="owner_help.html"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
-            <a href="owner_logout.html"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
+            <a href="renter_help.html" class="tab-link"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
+            <a href="renter_logout.html" class="tab-link"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
         </div>
     </div>
 
     <div class="main-container">
         <div class="header">
-            <h2>UEP DORMDASH</h2>
+            <h2 class="brand-title">UEP DORMDASH</h2>
         </div>
 
-        <div class="content-wrapper">
-            <div class="search-header">
-                <div>
-                    <h1>Find Boarding Houses</h1>
-                    <p class="listing-count">Explore other properties in the area</p>
-                </div>
+        <div class="scroll-area">
+            <div class="search-header-box">
+                <h1>Find your next home</h1>
                 <div class="main-search-bar">
                     <input type="text" placeholder="Search by name or keyword (e.g. Parcon)...">
                     <button class="btn-search">Search</button>
@@ -74,17 +70,27 @@
                         <label class="check-item"><input type="checkbox"> Free Wi-Fi</label>
                         <label class="check-item"><input type="checkbox"> Own CR</label>
                         <label class="check-item"><input type="checkbox"> Aircon</label>
+                        <label class="check-item"><input type="checkbox"> Kitchen Access</label>
                     </div>
 
                     <button class="btn-apply">Apply Filters</button>
                 </aside>
 
                 <main class="results-area">
-                    <p class="results-count">Showing 12 results</p>
+                    <div class="results-top-bar">
+                        <p class="results-count">Showing 12 results</p>
+                        <select class="sort-select">
+                            <option>Sort by: Newest</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
                     
                     <div class="results-grid">
                         <div class="result-card">
-                            <div class="res-image" style="background-image: url('room1.jpg');"></div>
+                            <div class="res-image" style="background-image: url('room1.jpg');">
+                                <span class="res-badge">Featured</span>
+                            </div>
                             <div class="res-info">
                                 <h3>Seaside Hostel</h3>
                                 <p class="res-price">₱1,500 / month</p>
@@ -105,6 +111,19 @@
                                 <div class="res-stats">
                                     <span>⭐ 4.8</span>
                                     <span class="availability full">Full</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="res-image" style="background-image: url('room3.jpg');"></div>
+                            <div class="res-info">
+                                <h3>Deralyn Big House</h3>
+                                <p class="res-price">₱2,500 / month</p>
+                                <p class="res-loc">📍 UEP Zone 2</p>
+                                <div class="res-stats">
+                                    <span>⭐ 4.2</span>
+                                    <span class="availability">1 Room left</span>
                                 </div>
                             </div>
                         </div>

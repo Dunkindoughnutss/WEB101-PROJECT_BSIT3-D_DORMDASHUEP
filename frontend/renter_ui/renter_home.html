@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renter Home - UEP DORMDASH</title>
+    <link rel="stylesheet" href="css/renter_home.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-section">
+            <img src="logo.png" alt="UEP" class="logo-top">
+        </div>
+        
+        <div class="nav-icons">
+            <a href="renter_profile.html" class="tab-link"><img class="icon" src="../icons/circle-user-round.svg" alt="profile"></a>
+            <a href="renter_home.html" class="tab-link active"><img class="icon" src="../icons/house.svg" alt="home"></a>
+            <a href="renter_search.html" class="tab-link"><img class="icon" src="../icons/search.svg" alt="search"></a>
+            <a href="renter_map.html" class="tab-link"><img class="icon" src="../icons/map-pin-house.svg" alt="map"></a>
+            <a href="renter_activity.html" class="tab-link"><img class="icon" src="../icons/check-check.svg" alt="activity"></a>
+            <a href="renter_settings.html" class="tab-link"><img class="icon" src="../icons/settings.svg" alt="settings"></a>
+        </div>
+
+        <div class="bottom-icons">
+            <a href="renter_help.html" class="tab-link"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
+            <a href="renter_logout.html" class="tab-link"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="header">
+            <h2 class="brand-title">UEP DORMDASH</h2>
+            <div class="search-container">
+                <input type="text" placeholder="UEP ZONE 2" class="search-input">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <div class="scroll-area">
+            <section class="section">
+                <h3 class="section-label">Recommended Boarding Houses based on your preferences</h3>
+                <div class="horizontal-scroll">
+                    <div class="card featured" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('room1.jpg');">
+                        <span class="badge rating">★ 4</span>
+                        <button class="badge add-btn">+</button>
+                        <div class="card-text">
+                            <p class="card-price">₱ 1700/Month</p>
+                            <h4 class="card-title">Parcon Dormitory</h4>
+                            <p class="card-sub">5kms away</p>
+                        </div>
+                    </div>
+                    <div class="card featured" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('room2.jpg');">
+                        <span class="badge rating">★ 4</span>
+                        <button class="badge add-btn">+</button>
+                        <div class="card-text">
+                            <p class="card-price">₱ 2500/Month</p>
+                            <h4 class="card-title">Deralyn Big House</h4>
+                            <p class="card-sub">3kms away</p>
+                        </div>
+                    </div>
+                    <div class="card featured" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('room3.jpg');">
+                        <span class="badge rating">★ 3</span>
+                        <button class="badge add-btn">+</button>
+                        <div class="card-text">
+                            <p class="card-price">₱ 2000/month</p>
+                            <h4 class="card-title">zeven Bhouses</h4>
+                            <p class="card-sub">1.4kms away</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3 class="section-label">Near You</h3>
+                <div class="near-grid">
+                    <div class="mini-card">
+                        <div class="mini-thumb" style="background-image: url('h1.jpg');"></div>
+                        <div class="mini-info">
+                            <h5>Seaside Hostel</h5>
+                            <p>PHP 1500.00/month</p>
+                        </div>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-thumb" style="background-image: url('h2.jpg');"></div>
+                        <div class="mini-info">
+                            <h5>Longcop BH</h5>
+                            <p>PHP 2500.00/month</p>
+                        </div>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-thumb" style="background-image: url('h3.jpg');"></div>
+                        <div class="mini-info">
+                            <h5>University Homes</h5>
+                            <p>PHP 3000.00/month</p>
+                        </div>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-thumb" style="background-image: url('h4.jpg');"></div>
+                        <div class="mini-info">
+                            <h5>Cruz BHouse</h5>
+                            <p>PHP 1700.00/month</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3 class="section-label">New Listings</h3>
+                <div class="horizontal-scroll">
+                    <div class="card featured" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('room2.jpg');">
+                        <span class="badge rating">★ 4</span>
+                        <button class="badge add-btn">+</button>
+                        <div class="card-text">
+                            <p class="card-price">₱ 2500/Month</p>
+                            <h4 class="card-title">Deralyn Big House</h4>
+                            <p class="card-sub">3kms away</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</body>
+</html>

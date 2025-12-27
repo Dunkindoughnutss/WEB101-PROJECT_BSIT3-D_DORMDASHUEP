@@ -1,0 +1,198 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+/* SIDEBAR LAYOUT */
+.sidebar {
+    width: 75px;
+    background: #fff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Spreads Top, Middle, Bottom */
+    align-items: center;
+    padding: 25px 0;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+/* MIDDLE NAVIGATION BOX */
+.nav-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Vertical spacing between tabs */
+    flex-grow: 1; 
+    justify-content: center; /* Centers the whole group vertically */
+}
+
+/* BOTTOM SECTION */
+.bottom-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* TAB LINK STYLING */
+.tab-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+/* THE BLUE ACTIVE TAB SIGNIFIER */
+.tab-link.active {
+    background-color: #4A90E2; /* Solid Blue */
+}
+
+.tab-link.active .icon {
+    filter: brightness(0) invert(1); /* Makes the icon white */
+}
+
+.sidebar .icon {
+    width: 22px;
+    height: 22px;
+    opacity: 0.6;
+}
+
+.tab-link.active .icon {
+    opacity: 1;
+}
+
+/* MAIN CONTAINER & OTHER STYLES */
+.main-container {
+    margin-left: 75px;
+    height: 100vh;
+    background: url('../assets/campus_bg.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #77b7ff;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+
+
+.brand-title { margin: 0; font-size: 1.1rem; font-weight: bold; }
+
+.search-container { position: relative; width: 450px; }
+
+.search-input {
+    width: 100%;
+    padding: 10px 45px;
+    border-radius: 25px;
+    border: none;
+    font-size: 0.9rem;
+    outline: none;
+    background: #fff;
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.scroll-area {
+    padding: 25px 40px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.section { margin-bottom: 35px; }
+
+/* ... existing code ... */
+
+.section-label {
+    color: #000000;             /* Changed from white to Black */
+    font-size: 1.3rem;          /* Slightly increased size */
+    font-weight: 800;           /* Extra Bold */
+    text-transform: none;       /* Keeps original casing */
+    margin-bottom: 20px;
+    display: block;
+    /* Optional: removing the shadow for a cleaner look, 
+       or keeping it if you want a slight "pop" effect */
+    text-shadow: none;          
+}
+
+/* ... rest of the code ... */
+
+/* FEATURED CARDS */
+.horizontal-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.horizontal-scroll::-webkit-scrollbar { display: none; }
+
+.card.featured {
+    min-width: 320px;
+    height: 230px;
+    border-radius: 18px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.badge {
+    position: absolute;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.rating { top: 15px; left: 15px; background: rgba(255, 193, 7, 0.9); color: #000; font-weight: bold; }
+.add-btn { top: 15px; right: 15px; background: rgba(255,255,255,0.3); backdrop-filter: blur(5px); cursor: pointer; width: 35px; height: 35px; font-size: 1.2rem; }
+
+.card-text { position: absolute; bottom: 20px; left: 20px; }
+.card-price { margin: 0; font-weight: bold; font-size: 0.95rem; }
+.card-title { margin: 4px 0; font-size: 1.4rem; }
+.card-sub { margin: 0; font-size: 0.85rem; opacity: 0.8; }
+
+/* NEAR YOU GRID */
+.near-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.mini-card {
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    overflow: hidden;
+    height: 80px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.mini-thumb { width: 90px; height: 100%; background-size: cover; background-position: center; }
+.mini-info { padding: 12px 18px; display: flex; flex-direction: column; justify-content: center; }
+.mini-info h5 { margin: 0; font-size: 1.05rem; color: #333; }
+.mini-info p { margin: 4px 0 0 0; font-size: 0.85rem; color: #777; }

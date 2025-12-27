@@ -1,0 +1,100 @@
+/* Centering Logic - Matches Settings/Help Center */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center for logout */
+    padding: 30px 40px;
+    height: 100%;
+}
+
+/* Large Container - Matches Settings/Help Size */
+.logout-container-large {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    width: 95%; 
+    max-width: 1400px; 
+    padding: 80px 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.logout-header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #222;
+    font-weight: 800;
+}
+
+.logout-header p {
+    color: #666;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+/* Illustration/Icon Area */
+.logout-illustration {
+    margin: 40px 0;
+}
+
+.door-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+/* Button Container */
+.logout-actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Confirm Logout Button (Red) */
+.btn-confirm {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 18px 60px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 77, 77, 0.3);
+}
+
+.btn-confirm:hover {
+    background: #cc0000;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(255, 77, 77, 0.4);
+}
+
+/* Stay Logged In Button (Blue) */
+.btn-stay {
+    background: #4A90E2; /* Matches Renter Blue */
+    color: white;
+    border: none;
+    padding: 18px 60px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+.btn-stay:hover {
+    background: #357ABD;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(74, 144, 226, 0.4);
+}
+
+.system-footer {
+    margin-top: 60px;
+    color: #aaa;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
