@@ -148,6 +148,17 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <img class="icon" src="../icons/settings.svg" alt="settings">
             </a>
         </div>
+
+        <div class="bottom-icons">
+            <a href="owner_help.php" class="<?= ($current_page == 'owner_help.php') ? 'active' : ''; ?>">
+                <img class="icon" src="../icons/message-circle-question-mark.svg">
+            </a>
+            <a href="logout.php">
+                <img class="icon" src="../icons/log-out.svg">
+            </a>
+        </div>
+
+
     </div>
 
     <div class="main-container">
