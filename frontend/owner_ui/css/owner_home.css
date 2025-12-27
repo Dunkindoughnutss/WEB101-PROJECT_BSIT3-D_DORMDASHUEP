@@ -155,9 +155,13 @@ body, html {
 
 .listing-image {
     height: 200px;
-    background-color: #eee;
-    background-size: cover;
-    background-position: center;
+    width: 100%; /* Ensure it fills the card width */
+    background-color: #eee; /* The gray fallback you see now */
+    background-size: cover; /* Zooms/crops to fill the 200px height without stretching */
+    background-position: center; /* Keeps the subject of the photo centered */
+    background-repeat: no-repeat; /* Prevents tiling */
+    border-radius: 8px 8px 0 0; /* Rounds the top corners to match a card design */
+    display: block;
 }
 
 .listing-details {

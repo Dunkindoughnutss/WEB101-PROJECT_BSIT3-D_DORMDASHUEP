@@ -1,39 +1,13 @@
 <?php
 session_start();
 
-// Only owners can access this
-// if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'owner') {
-//     die("Access denied: Only owners can add listings.");
-// }
+// 1. Correct Path to your dbconnection.php
+// From frontend/owner_ui/includes/ to backend/ is 3 steps up
+include __DIR__ . '/../../../backend/dbconnection.php';
 
-// Database connection
-$host = "localhost";
-$dbname = "dormdash_final_v1";
-$username = "root";
-// XAMPP's default MySQL root user typically has an empty password.
-// If you've set a root password, replace the value below with it,
-// or create a dedicated DB user for the web app (recommended).
-$password = "";
+if (isset($_POST['submit'])) {
 
-try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-        $username,
-        $password,
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-} catch(PDOException $e) {
-    // Do not expose raw DB errors in production. Show actionable hint.
-    die("Connection failed: unable to connect to the database. Please verify DB credentials and that MySQL is running.");
-}
-
-// Check if form is submitted
-if(isset($_POST['submit'])) {
-
-    // Logged-in owner
-    // $user_id = $_SESSION['user_id'];
-
-    // Form fields (must match your form names)
+    // 2. Capture Form Fields
     $ownername = $_POST['ownername'];
     $contact = $_POST['contact'];
     $title = $_POST['title'];
@@ -42,37 +16,23 @@ if(isset($_POST['submit'])) {
     $bh_address = $_POST['address'];
     $bh_description = $_POST['bh_description'];
     $curfew_policy = $_POST['curfew_policy'];
-    $amenities = $_POST['amenities'];
     $roomtype = $_POST['room_type'];
     $preferred_gender = $_POST['preferred_gender'];
+    $amenities = isset($_POST['amenities']) ? implode(",", $_POST['amenities']) : '';
 
     try {
+        // Use $conn because that is what is defined in your dbconnection.php
+        $conn->beginTransaction();
 
-        // Insert into bh_listing table
-        $stmt = $pdo->prepare("
+        $stmt = $conn->prepare("
             INSERT INTO bh_listing 
-            (
-                user_id, ownername, contact, title, bh_description,
-                monthly_rent, bh_address, available_rooms, roomtype,
-                amenities, preferred_gender, curfew_policy
-            )
+            (user_id, ownername, contact, title, bh_description, monthly_rent, bh_address, available_rooms, roomtype, amenities, preferred_gender, curfew_policy)
             VALUES 
-            (
-                :user_id, :ownername, :contact, :title, :bh_description,
-                :monthly_rent, :bh_address, :available_rooms, :roomtype,
-                :amenities, :preferred_gender, :curfew_policy
-            )
+            (:user_id, :ownername, :contact, :title, :bh_description, :monthly_rent, :bh_address, :available_rooms, :roomtype, :amenities, :preferred_gender, :curfew_policy)
         ");
 
-        $user_id = 1;
-
-        // Insert amenities as a comma-separated string into bh_listing
-        $amenities = isset($_POST['amenities']) ? implode(", ", $_POST['amenities']) : '';
-
-        $pdo->beginTransaction();
-
         $stmt->execute([
-            ':user_id' => $user_id,
+            ':user_id' => 1,
             ':ownername' => $ownername,
             ':contact' => $contact,
             ':title' => $title,
@@ -86,58 +46,61 @@ if(isset($_POST['submit'])) {
             ':curfew_policy' => $curfew_policy
         ]);
 
-        // Get the inserted listing ID
-        $bh_id = $pdo->lastInsertId();
+        $bh_id = $conn->lastInsertId();
 
-        // Handle uploaded images (if any)
-        if (isset($_FILES['images']) && is_array($_FILES['images']['name'])) {
-            $uploadDir = __DIR__ . '/uploads';
+        // 3. Handle Images
+        if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0])) {
+
+            // Set upload folder (inside your project)
+            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/uploads/listings/";
+
+            // Create folder if it doesn't exist
             if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0755, true);
-            }
-
-            $allowedExt = ['jpg','jpeg','png','gif'];
-            $maxSize = 5 * 1024 * 1024; // 5 MB
-
-            $imgStmt = $pdo->prepare("INSERT INTO bh_images (bh_id, image_path) VALUES (:bh_id, :image_path)");
-
-            // Loop through files
-            for ($i = 0; $i < count($_FILES['images']['name']); $i++) {
-                $error = $_FILES['images']['error'][$i];
-                if ($error !== UPLOAD_ERR_OK) continue; // skip errored uploads
-
-                $tmpName = $_FILES['images']['tmp_name'][$i];
-                $origName = basename($_FILES['images']['name'][$i]);
-                $size = $_FILES['images']['size'][$i];
-
-                if ($size > $maxSize) continue; // skip oversized
-
-                $ext = strtolower(pathinfo($origName, PATHINFO_EXTENSION));
-                if (!in_array($ext, $allowedExt)) continue; // skip invalid types
-
-                // Create a unique filename
-                $newName = uniqid('img_', true) . '.' . $ext;
-                $destination = $uploadDir . DIRECTORY_SEPARATOR . $newName;
-
-                if (move_uploaded_file($tmpName, $destination)) {
-                    // Store web-accessible path relative to project root
-                    $webPath = 'uploads/' . $newName;
-                    $imgStmt->execute([':bh_id' => $bh_id, ':image_path' => $webPath]);
+                if (!mkdir($uploadDir, 0777, true)) {
+                    die("❌ Failed to create folder: $uploadDir");
                 }
             }
+
+            $imgStmt = $conn->prepare("INSERT INTO bh_images (bh_id, image_path) VALUES (:bh_id, :image_path)");
+
+            // Loop through uploaded files
+            for ($i = 0; $i < count($_FILES['images']['name']); $i++) {
+
+                // Skip files with errors
+                if ($_FILES['images']['error'][$i] !== UPLOAD_ERR_OK) {
+                    echo "❌ Error uploading file: " . $_FILES['images']['name'][$i] . " | Error code: " . $_FILES['images']['error'][$i] . "<br>";
+                    continue;
+                }
+
+                // Generate unique filename
+                $ext = strtolower(pathinfo($_FILES['images']['name'][$i], PATHINFO_EXTENSION));
+                $newName = uniqid('bh_', true) . '.' . $ext;
+                $destination = $uploadDir . $newName;
+
+                // Move the file to upload folder
+                if (move_uploaded_file($_FILES['images']['tmp_name'][$i], $destination)) {
+                    // Save relative path to DB
+                    $dbPath = 'uploads/listings/' . $newName;
+                    $imgStmt->execute([':bh_id' => $bh_id, ':image_path' => $dbPath]);
+                    echo "✅ Uploaded: $dbPath<br>";
+                } else {
+                    echo "❌ Failed to move file: " . $_FILES['images']['name'][$i] . "<br>";
+                    echo "Destination folder: $uploadDir<br>";
+                }
+            }
+        } else {
+            echo "❌ No files uploaded.<br>";
         }
 
-        $pdo->commit();
 
-        // Redirect back to the form with a success flag so the UI can show a toast.
-        header('Location: owner_home.html?success=1');
+        $conn->commit();
+        // Redirect back to home
+        header('Location: ../owner_home.php?success=1');
         exit;
-
-    } catch(Exception $e) {
-        echo "Failed to add listing: " . $e->getMessage();
+    } catch (Exception $e) {
+        if ($conn->inTransaction()) {
+            $conn->rollBack();
+        }
+        die("❌ Database Error: " . $e->getMessage());
     }
-
-} else {
-    echo "Form not submitted.";
 }
-?>
