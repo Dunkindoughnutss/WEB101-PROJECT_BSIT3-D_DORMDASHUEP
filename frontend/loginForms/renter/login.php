@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['role'] = $user['role'];
             
-            header('Location: ../../../renter_ui/renter_home.php');
+            header('Location: ../../renter_ui/renter_home.php');
             exit;
         } else {
             header('Location: login.php?error=invalid_credentials');

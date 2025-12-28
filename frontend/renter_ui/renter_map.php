@@ -35,7 +35,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
     <div class="sidebar">
         <div class="logo-section">
-            <img src="logo.png" alt="UEP" class="logo-top">
+            <img src="../res/logo.png" alt="UEP" class="logo-top">
         </div>
         
         <div class="nav-icons">
@@ -80,12 +80,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             <button class="map-btn" id="trackBtn" title="Track My Location">📍</button>
                         </div>
                         <small class="status-text" id="gps-status">GPS: Ready</small>
-                    </div>
-
-                    <div class="control-card">
-                        <h3>Tools</h3>
-                        <button class="btn-add-pin" id="addPinBtn">+ Pin Interest Point</button>
-                        <small class="status-text">Click map to mark a spot</small>
                     </div>
                 </div>
             </div>

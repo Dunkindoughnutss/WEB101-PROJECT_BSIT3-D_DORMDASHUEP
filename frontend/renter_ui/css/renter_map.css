@@ -107,3 +107,91 @@
 }
 
 .btn-text.delete { color: #e74c3c; }
+
+/* --- MAP & CONTROLS FIX --- */
+
+.map-container-wrapper {
+    height: 600px; 
+    width: 100%;
+    position: relative; /* Required for absolute controls */
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#map {
+    height: 100% !important;
+    width: 100% !important;
+    z-index: 1; 
+}
+
+/* Float the controls in the top-right corner of the map */
+.map-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Higher than map */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    width: 200px;
+}
+
+.control-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+.map-btn {
+    flex: 1;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.btn-add-pin {
+    width: 100%;
+    padding: 10px;
+    background: #2B469A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.status-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: #666;
+}
+
+.leaflet-control-container {
+    z-index: 500;
+}
+
+.sidebar {
+    z-index: 9999 !important;
+}
+
+
+.sidebar .logo-section .logo-top {
+    width: 40px;
+    height: 40px;
+}

@@ -86,7 +86,7 @@ if ($user_id) {
         </div>
         <div class="bottom-icons">
             <a href="renter_help.php" class="tab-link"><img class="icon" src="../icons/message-circle-question-mark.svg"></a>
-            <a href="<?= $user_id ? 'renter_logout.php' : '../loginForms/renter/login.php' ?>" class="tab-link">
+            <a href="<?= $user_id ? 'logout.php' : '../loginForms/renter/login.php' ?>" class="tab-link">
                 <img class="icon" src="../icons/<?= $user_id ? 'log-out' : 'log-out' ?>.svg">
             </a>
         </div>

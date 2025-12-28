@@ -84,7 +84,7 @@ try {
 
         <div class="bottom-icons">
             <a href="renter_help.php" class="tab-link"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
-            <a href="renter_logout.php" class="tab-link"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
+            <a href="logout.php" class="tab-link"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
         </div>
     </div>
 
