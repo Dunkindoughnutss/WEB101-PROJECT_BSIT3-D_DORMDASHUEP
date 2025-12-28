@@ -23,6 +23,23 @@ body, html {
     z-index: 1000;
 }
 
+
+.logo-section {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.sidebar .logo-section .logo-top {
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar .icon {
+    width: 22px;
+    height: 22px;
+}
+
 /* MIDDLE NAVIGATION BOX */
 .nav-icons {
     display: flex;

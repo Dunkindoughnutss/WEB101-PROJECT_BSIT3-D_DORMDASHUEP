@@ -64,7 +64,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <div class="bottom-icons">
             <a href="renter_help.php" class="tab-link"><img class="icon" src="../icons/message-circle-question-mark.svg" alt="help"></a>
             <?php if ($user_id): ?>
-                <a href="renter_logout.php" class="tab-link"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
+                <a href="logout.php" class="tab-link"><img class="icon" src="../icons/log-out.svg" alt="logout"></a>
             <?php else: ?>
                 <a href="../loginForms/renter/login.php" class="tab-link"><img class="icon" src="../icons/log-in.svg" alt="login"></a>
             <?php endif; ?>
