@@ -15,7 +15,7 @@
 <nav class="navbar">
     <div class="nav-brand"><a href="../homepage.php"><img src="../../res/logo1.png" alt="UEP logo" class="nav-logo"/><span>UEP DORMDASH</span></a></div>
     <div class="nav-links">
-
+        <a href="../homepage.php">Home</a>
         <a href="../owner/ownerlogin.php">Owner Login</a>
     </div>
 </nav>
