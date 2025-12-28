@@ -2,6 +2,7 @@
 session_start();
 require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $renterName     = trim($_POST['name']);
     $email    = trim($_POST['email']);

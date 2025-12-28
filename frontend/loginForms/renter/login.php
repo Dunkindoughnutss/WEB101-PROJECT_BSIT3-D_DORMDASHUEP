@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: login.php?error=empty_fields');
         exit;
     }
+	
 
 	require_once __DIR__ . '/../../../backend/dbconnection.php';
 

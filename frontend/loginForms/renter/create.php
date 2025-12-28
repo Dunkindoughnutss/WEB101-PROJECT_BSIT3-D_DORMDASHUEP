@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../css/create2.css" />
 </head>
 <body>
+    
 
 <!-- Top navigation -->
 <nav class="navbar">

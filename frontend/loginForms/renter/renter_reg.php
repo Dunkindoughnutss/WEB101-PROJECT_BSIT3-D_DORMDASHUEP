@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+    
     try {
         $checkStmt = $conn->prepare("SELECT email FROM users WHERE email = :email");
         $checkStmt->execute(['email' => $email]);
