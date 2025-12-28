@@ -77,7 +77,9 @@ $history = $hist_stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="bottom-icons">
             <a href="owner_help.php"><img class="icon" src="../icons/message-circle-question-mark.svg"></a>
-            <a href="owner_logout.php"><img class="icon" src="../icons/log-out.svg"></a>
+            <a href="javascript:void(0);" onclick="handleLogout();">
+                <img class="icon" src="../icons/log-out.svg" alt="Logout">
+            </a>
         </div>
     </div>
 
@@ -202,6 +204,15 @@ $history = $hist_stmt->fetchAll(PDO::FETCH_ASSOC);
 
         function openHistory() { document.getElementById('historyModal').style.display = 'flex'; }
         function closeHistory() { document.getElementById('historyModal').style.display = 'none'; }
+    </script>
+
+    <script>
+        // Logout Function
+        function handleLogout() {
+            if(confirm("Log out of UEP DormDash?")) {
+                window.location.href = 'logout.php';
+            }
+        }
     </script>
 </body>
 </html>

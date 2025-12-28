@@ -11,8 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Relative path to backend connection
-    require_once __DIR__ . '/../../../backend/dbconnection.php';
+	require_once __DIR__ . '/../../../backend/dbconnection.php';
 
     try {
         $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE email = :email AND role = 'renter' LIMIT 1");
@@ -25,8 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['role'] = $user['role'];
             
-            // SUCCESS: Redirect to renter_home.php using the correct relative path
-            header('Location: ../../renter_ui/renter_home.php');
+            header('Location: ../../../renter_ui/renter_home.php');
             exit;
         } else {
             // FAILURE: Redirect back with error parameter
