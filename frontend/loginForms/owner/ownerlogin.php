@@ -7,14 +7,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     if ($email === '' || $password === '') {
-        header('Location: login.php?error=empty_fields');
+        header('Location: ownerlogin.php?error=empty_fields');
         exit;
     }
 
-	require_once __DIR__ . '/../../../backend/dbconnection.php';
+
+    require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
 
     try {
-        $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE email = :email AND role = 'renter' LIMIT 1");
+        $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE email = :email AND role = 'owner' LIMIT 1");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -24,19 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['role'] = $user['role'];
             
-            header('Location: ../../renter_ui/renter_home.php');
+            header('Location: ../../owner_ui/owner_home.php');
             exit;
         } else {
-            header('Location: login.php?error=invalid_credentials');
+            header('Location: ownerlogin.php?error=invalid_credentials');
             exit;
         }
     } catch (PDOException $e) {
         error_log($e->getMessage());
-        header('Location: login.php?error=server_error');
+        header('Location: ownerlogin.php?error=server_error');
         exit;
     }
 }
-// If not POST, render the login HTML page below
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<div class="nav-brand"><img src="../../res/logo1.png" alt="UEP logo" class="nav-logo"/><span>UEP DORMDASH</span></div>
 	<div class="nav-links">
 		<a href="../../admin_ui/admin_login.php">Admin</a>
-		<a href="../owner/ownerlogin.php">Owner Login</a>
+		<a href="../renter/login.php">Renter Login</a>
 	</div>
 </nav>
 
@@ -122,10 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<img src="../../res/logo1.png" alt="ueplogo" class="logo">
 	<h1>UEP DORMDASH</h1>
 
-	<h2>Renter Login</h2>
+	<h2> Owner Login</h2>
 
-	<form action="login.php" method="POST">
-
+	<form action="ownerlogin.php" method="POST">
 		<label>Email</label>
 		<input type="email" name="email" placeholder="username@gmail.com" required />
 
@@ -133,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<input type="password" name="password" placeholder="Password" required />
 		<a href="javascript:void(0);" class="forgot-link" onclick="openModal()">Forgot Password?</a>
 
-		<button type="submit" class="btn-login">Sign in</button>
+		<button type="submit" class="btn-login" href>Sign in</button>
 	</form>
 		<div class="social-container">
 			<a href="https://accounts.google.com" target="_blank" class="social-btn google">
@@ -150,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		</div>
 
 	<div class="links">
-		Don't have an account? <a href="create.php">Register for free</a>
+		Don't have an account? <a href="ownercreate.php">Register for free</a>
 	</div>
 </div>
 
@@ -208,7 +207,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		showToast('Invalid email or password', true);
 	}
 });
-
 		//FORGOT PASS SCRIPT
 
 		function openModal() {
@@ -239,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			const msg = document.getElementById('modalMsg');
 
 			// Use Fetch to check email in a small background script
-			fetch('check_email2.php', {
+			fetch('check_email.php', {
 				method: 'POST',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 				body: 'email=' + encodeURIComponent(email)
@@ -264,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			if(pass !== conf) { alert("Passwords don't match!"); return; }
 
-			fetch('update_pass_logic2.php', {
+			fetch('update_pass_logic.php', {
 				method: 'POST',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 				body: `email=${email}&pass=${pass}`
