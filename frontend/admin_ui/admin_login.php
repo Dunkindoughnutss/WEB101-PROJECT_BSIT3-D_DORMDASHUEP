@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
+require_once __DIR__ . '/../../backend/dbconnection.php';
 
 session_start();
 
@@ -15,21 +15,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($email === '' || $password === '') {
         $error = 'Please enter both email and password.';
-    } else {
+ } else {
         try {
-            $stmt = $conn->prepare('SELECT user_id, email, password, role FROM users WHERE email = :email AND role = "admin" LIMIT 1');
+            $stmt = $conn->prepare('SELECT user_id, email, password, role FROM users WHERE email = :email LIMIT 1');
             $stmt->execute([':email' => $email]);
             $user = $stmt->fetch();
 
-            if ($user && password_verify($password, $user['password'])) {
-                session_regenerate_id();
-                $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['role'] = $user['role'];
-                header('Location: admin_index.php');
-                exit;
+            if ($user) {
+                // Get the passwords
+                $inputPassword = $password;
+                $storedPassword = $user['password'];
+
+                // VALIDATION: Check for Hash OR Plain Text (for your current DB state)
+                $isValid = false;
+                if (password_verify($inputPassword, $storedPassword)) {
+                    $isValid = true;
+                } elseif ($inputPassword === $storedPassword) {
+                    $isValid = true;
+                }
+
+                if ($isValid) {
+                    if ($user['role'] === 'admin') {
+                        session_regenerate_id();
+                        $_SESSION['user_id'] = $user['user_id'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['role'] = $user['role'];
+                        header('Location: admin_index.php');
+                        exit;
+                    } else {
+                        $error = 'Access Denied: You are logged in as ' . $user['role'] . '.';
+                    }
+                } else {
+                    $error = 'Invalid password.';
+                }
             } else {
-                $error = 'Invalid admin credentials or unauthorized access.';
+                $error = 'No account found with that email.';
             }
         } catch (PDOException $e) {
             $error = 'Database error: ' . $e->getMessage();

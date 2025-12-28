@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
+	require_once __DIR__ . '/../../../backend/dbconnection.php';
 
     try {
         $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE email = :email AND role = 'renter' LIMIT 1");
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['role'] = $user['role'];
             
-            header('Location: ../homepage.php');
+            header('Location: ../../../renter_ui/renter_home.php');
             exit;
         } else {
             header('Location: login.php?error=invalid_credentials');
