@@ -1,4 +1,4 @@
-/* FORM HEADER */
+/* ===== FORM HEADER ===== */
 .form-header {
     display: flex;
     justify-content: space-between;
@@ -9,7 +9,7 @@
 .form-header h1 { font-size: 28px; margin: 0; }
 .form-header b { color: #007bff; }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 .form-section {
     margin-bottom: 30px;
 }
@@ -21,13 +21,46 @@
     font-size: 18px;
 }
 
-/* IMAGE UPLOAD */
+/* ===== IMAGE UPLOAD ===== */
 .image-upload-container {
     display: flex;
     gap: 15px;
     margin: 10px 0 20px 0;
 }
 
+/* Horizontal preview */
+.preview-grid {
+    display: flex;
+    flex-wrap: nowrap;      /* keep in one row */
+    gap: 10px;
+    overflow-x: auto;
+    padding-top: 10px;
+}
+
+.image-preview {
+    width: 120px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Remove button on preview */
+.image-preview .remove-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Upload box */
 .upload-box {
     width: 150px;
     height: 120px;
@@ -42,15 +75,7 @@
     color: #888;
 }
 
-.image-preview {
-    width: 200px;
-    height: 120px;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-}
-
-/* INPUT GROUPS */
+/* ===== INPUT GROUPS ===== */
 .input-group {
     margin-bottom: 15px;
 }
@@ -84,7 +109,7 @@
     flex: 1;
 }
 
-/* CHECKBOX GRID */
+/* ===== CHECKBOX GRID ===== */
 .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -109,7 +134,7 @@
     cursor: pointer;
 }
 
-/* CONFIRMATION & ACTIONS */
+/* ===== CONFIRMATION & ACTIONS ===== */
 .confirmation {
     margin: 30px 0;
     font-size: 13px;
@@ -137,4 +162,110 @@
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 70px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 100;
+    overflow: hidden;
+}
+
+/* LOGO */
+.logo-section {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-section .logo-top {
+    width: 40px;
+    height: 40px;
+}
+
+/* NAV ICONS */
+.nav-icons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+/* BOTTOM ICONS */
+.bottom-icons {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* LINKS */
+.sidebar a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+/* ICONS */
+.sidebar .icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* HOVER */
+.sidebar a:hover {
+    background-color: #f1f5f9;
+    transform: scale(1.05);
+}
+
+/* ACTIVE */
+.sidebar a.active {
+    background-color: #007bff;
+}
+
+.sidebar a.active .icon {
+    filter: brightness(0) invert(1);
+}
+
+/* ===== TOAST ===== */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-size: 16px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
 }

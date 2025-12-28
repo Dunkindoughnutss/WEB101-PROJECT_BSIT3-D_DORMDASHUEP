@@ -2,8 +2,8 @@
 .main-wrapper {
     margin-left: 70px;
     min-height: 100vh;
-    background: linear-gradient(rgba(243, 246, 252, 0.7), rgba(243, 246, 252, 0.7)), 
-                url('../assets/campus_bg.jpg') no-repeat center center;
+    background: linear-gradient(rgba(243, 246, 252, 0.7), rgba(243, 246, 252, 0.7)),
+        url('../assets/campus_bg.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -16,7 +16,7 @@
     margin: 40px auto;
     padding: 40px;
     border-radius: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .settings-header {
@@ -49,7 +49,7 @@
     padding: 25px;
     border-radius: 20px;
     border: 1px solid #f0f0f0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
 
 .card-title {
@@ -108,12 +108,19 @@
     height: 20px;
 }
 
-.switch input { opacity: 0; width: 0; height: 0; }
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #ccc;
     transition: .4s;
     border-radius: 20px;
@@ -122,15 +129,22 @@
 .slider:before {
     position: absolute;
     content: "";
-    height: 14px; width: 14px;
-    left: 3px; bottom: 3px;
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
     transition: .4s;
     border-radius: 50%;
 }
 
-input:checked + .slider { background-color: #77b7ff; }
-input:checked + .slider:before { transform: translateX(20px); }
+input:checked+.slider {
+    background-color: #77b7ff;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
 
 /* SYSTEM INFO */
 .system-card {
@@ -145,6 +159,97 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 /* RESPONSIVE */
 @media (max-width: 800px) {
-    .settings-grid { grid-template-columns: 1fr; }
-    .system-card { grid-column: span 1; }
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .system-card {
+        grid-column: span 1;
+    }
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 70px;
+    background: #ffffff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 12px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* ===== LOGO ===== */
+.logo-section {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.sidebar .logo-section .logo-top {
+    width: 40px;
+    height: 40px;
+}
+
+/* ===== NAV ICONS (MIDDLE) ===== */
+.nav-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex-grow: 1;
+    padding-top: 20px;
+}
+
+/* ===== BOTTOM ICONS ===== */
+.bottom-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 25px;
+    /* 👈 lifts them up */
+}
+
+
+/* ===== LINKS ===== */
+.sidebar a {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+/* ===== ICON ===== */
+.sidebar .icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* ===== HOVER ===== */
+.sidebar a:hover {
+    background-color: #f1f5f9;
+    transform: scale(1.05);
+}
+
+/* ===== ACTIVE ===== */
+.sidebar a.active {
+    background-color: #007bff;
+}
+
+.sidebar a.active .icon {
+    filter: brightness(0) invert(1);
 }
