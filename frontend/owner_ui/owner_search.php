@@ -1,53 +1,61 @@
 <?php
 session_start();
-// 1. Database Connection
-require_once 'C:/xampp/htdocs/WEB101-PROJECT_BSIT3-D_DORMDASHUEP/backend/dbconnection.php';
+require_once "../../backend/dbconnection.php";
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
-// 2. Capture Search and Filter inputs from the URL
-$search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
-$location_filter = isset($_GET['location']) ? $_GET['location'] : 'All Zones';
-$min_price = (isset($_GET['min_price']) && $_GET['min_price'] !== '') ? $_GET['min_price'] : 0;
-$max_price = (isset($_GET['max_price']) && $_GET['max_price'] !== '') ? $_GET['max_price'] : 999999;
-
-try {
-    // 3. Prepare the Base Query
-    $sql = "SELECT l.*, 
-            (SELECT image_path FROM bh_images WHERE bh_id = l.bh_id LIMIT 1) AS image_path 
-            FROM bh_listing l 
-            WHERE (l.title LIKE :query OR l.bh_description LIKE :query)";
-
-    // Add Location filter logic
-    if ($location_filter !== 'All Zones') {
-        $sql .= " AND l.bh_address LIKE :location";
-    }
-
-    // Add Price filter logic
-    $sql .= " AND l.monthly_rent BETWEEN :min AND :max";
-
-    $stmt = $conn->prepare($sql);
-    
-    // Bind values
-    $stmt->bindValue(':query', '%' . $search_query . '%');
-    $stmt->bindValue(':min', $min_price);
-    $stmt->bindValue(':max', $max_price);
-    if ($location_filter !== 'All Zones') {
-        $stmt->bindValue(':location', '%' . $location_filter . '%');
-    }
-
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $totalFound = count($results);
-
-} catch (PDOException $e) {
-    error_log($e->getMessage());
-    $totalFound = 0;
+// Redirect if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../loginForms/owner/ownerlogin.php");
+    exit();
 }
+
+// --- SEARCH & FILTER LOGIC ---
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$zone = isset($_GET['zone']) ? $_GET['zone'] : 'All Zones';
+$min_price = isset($_GET['min_price']) && $_GET['min_price'] !== '' ? (float)$_GET['min_price'] : 0;
+$max_price = isset($_GET['max_price']) && $_GET['max_price'] !== '' ? (float)$_GET['max_price'] : 999999;
+$amenities = isset($_GET['amenities']) ? $_GET['amenities'] : [];
+
+// Base Query
+$queryStr = "SELECT l.*, 
+            (SELECT image_path FROM bh_images WHERE bh_id = l.bh_id LIMIT 1) as main_image 
+            FROM bh_listing l WHERE 1=1";
+$params = [];
+
+// Apply Search Text
+if ($search !== '') {
+    $queryStr .= " AND (l.title LIKE :search OR l.bh_description LIKE :search)";
+    $params[':search'] = '%' . $search . '%';
+}
+
+// Apply Zone Filter
+if ($zone !== 'All Zones') {
+    $queryStr .= " AND l.bh_address LIKE :zone";
+    $params[':zone'] = '%' . $zone . '%';
+}
+
+// Apply Price Filter
+$queryStr .= " AND l.monthly_rent >= :min AND l.monthly_rent <= :max";
+$params[':min'] = $min_price;
+$params[':max'] = $max_price;
+
+// Apply Amenities Filter (Searching within the description or specific columns if you have them)
+// For this example, we assume you might have columns for these or search the description
+foreach ($amenities as $index => $amenity) {
+    $key = ":amenity" . $index;
+    $queryStr .= " AND (l.bh_description LIKE $key OR l.title LIKE $key)";
+    $params[$key] = '%' . $amenity . '%';
+}
+
+$stmt = $conn->prepare($queryStr);
+$stmt->execute($params);
+$listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,46 +63,46 @@ try {
     <link rel="stylesheet" href="css/owner_home.css">
     <link rel="stylesheet" href="css/owner_search.css">
 </head>
+
 <body>
 
     <div class="sidebar">
         <div class="logo-section">
             <img src="../res/logo1.png" alt="UEP" class="logo-top">
         </div>
+
         <div class="nav-icons">
-            <a href="owner_profile.php" class="<?php echo ($current_page == 'owner_profile.php') ? 'active' : ''; ?>">
+            <a href="owner_profile.php" class="<?= ($current_page == 'owner_profile.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/circle-user-round.svg" alt="profile">
             </a>
-            <a href="owner_home.php" class="<?php echo ($current_page == 'owner_home.php') ? 'active' : ''; ?>">
+            <a href="owner_home.php" class="<?= ($current_page == 'owner_home.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/house.svg" alt="home">
             </a>
-            <a href="owner_search.php" class="<?php echo ($current_page == 'owner_search.php') ? 'active' : ''; ?>">
+            <a href="owner_search.php" class="<?= ($current_page == 'owner_search.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/search.svg" alt="search">
             </a>
-            <a href="owner_map.php" class="<?php echo ($current_page == 'owner_map.php') ? 'active' : ''; ?>">
+            <a href="owner_map.php" class="<?= ($current_page == 'owner_map.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/map-pin-house.svg" alt="map">
             </a>
-            <a href="owner_listings.php" class="<?php echo ($current_page == 'owner_listings.php') ? 'active' : ''; ?>">
+            <a href="owner_listings.php" class="<?= ($current_page == 'owner_listings.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/pencil-line.svg" alt="listings">
             </a>
-            <a href="owner_manage.php" class="<?php echo ($current_page == 'owner_manage.php') ? 'active' : ''; ?>">
+            <a href="owner_manage.php" class="<?= ($current_page == 'owner_manage.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/check-check.svg" alt="manage">
             </a>
-            <a href="owner_settings.php" class="<?php echo ($current_page == 'owner_settings.php') ? 'active' : ''; ?>">
+            <a href="owner_settings.php" class="<?= ($current_page == 'owner_settings.php') ? 'active' : ''; ?>">
                 <img class="icon" src="../icons/settings.svg" alt="settings">
             </a>
         </div>
 
-                <div class="bottom-icons">
+        <div class="bottom-icons">
             <a href="owner_help.php" class="<?= ($current_page == 'owner_help.php') ? 'active' : ''; ?>">
-                <img class="icon" src="../icons/message-circle-question-mark.svg">
+                <img class="icon" src="../icons/message-circle-question-mark.svg" alt="help">
             </a>
-            <a href="javascript:void(0);" onclick="handleLogout();">
-                <img class="icon" src="../icons/log-out.svg" alt="Logout">
+            <a href="owner_logout.php">
+                <img class="icon" src="../icons/log-out.svg" alt="logout">
             </a>
         </div>
-
-
     </div>
 
     <div class="main-container">
@@ -110,7 +118,7 @@ try {
                         <p class="listing-count">Explore other properties in the area</p>
                     </div>
                     <div class="main-search-bar">
-                        <input type="text" name="search" value="<?php echo htmlspecialchars($search_query); ?>" placeholder="Search by name or keyword...">
+                        <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search by name or keyword...">
                         <button type="submit" class="btn-search">Search</button>
                     </div>
                 </div>
@@ -121,48 +129,54 @@ try {
 
                         <div class="filter-group">
                             <label>Location</label>
-                            <select name="location">
-                                <option value="All Zones" <?php if($location_filter == 'All Zones') echo 'selected'; ?>>All Zones</option>
-                                <option value="Zone 1" <?php if($location_filter == 'Zone 1') echo 'selected'; ?>>UEP Zone 1</option>
-                                <option value="Zone 2" <?php if($location_filter == 'Zone 2') echo 'selected'; ?>>UEP Zone 2</option>
-                                <option value="Zone 3" <?php if($location_filter == 'Zone 3') echo 'selected'; ?>>UEP Zone 3</option>
+                            <select name="zone">
+                                <option <?= $zone == 'All Zones' ? 'selected' : '' ?>>All Zones</option>
+                                <option <?= $zone == 'Zone 1' ? 'selected' : '' ?>>Zone 1</option>
+                                <option <?= $zone == 'Zone 2' ? 'selected' : '' ?>>Zone 2</option>
+                                <option <?= $zone == 'Zone 3' ? 'selected' : '' ?>>Zone 3</option>
                             </select>
                         </div>
 
                         <div class="filter-group">
                             <label>Price Range (Monthly)</label>
                             <div class="price-inputs">
-                                <input type="number" name="min_price" value="<?php echo $min_price; ?>" placeholder="Min">
-                                <input type="number" name="max_price" value="<?php echo ($max_price == 999999) ? '' : $max_price; ?>" placeholder="Max">
+                                <input type="number" name="min_price" value="<?= $min_price ?>" placeholder="Min">
+                                <input type="number" name="max_price" value="<?= $max_price == 999999 ? '' : $max_price ?>" placeholder="Max">
                             </div>
                         </div>
 
+                        <div class="filter-group">
+                            <label>Amenities</label>
+                            <label class="check-item"><input type="checkbox" name="amenities[]" value="WiFi" <?= in_array('WiFi', $amenities) ? 'checked' : '' ?>> Free Wi-Fi</label>
+                            <label class="check-item"><input type="checkbox" name="amenities[]" value="CR" <?= in_array('CR', $amenities) ? 'checked' : '' ?>> Own CR</label>
+                            <label class="check-item"><input type="checkbox" name="amenities[]" value="Aircon" <?= in_array('Aircon', $amenities) ? 'checked' : '' ?>> Aircon</label>
+                        </div>
+
                         <button type="submit" class="btn-apply">Apply Filters</button>
+                        <a href="owner_search.php" style="display:block; text-align:center; margin-top:10px; font-size:12px; color:gray;">Clear All</a>
                     </aside>
 
                     <main class="results-area">
-                        <p class="results-count">Showing <?php echo $totalFound; ?> results</p>
+                        <p class="results-count">Showing <?= count($listings) ?> results</p>
 
                         <div class="results-grid">
-                            <?php if ($totalFound > 0): ?>
-                                <?php foreach ($results as $row): ?>
+                            <?php if (count($listings) > 0): ?>
+                                <?php foreach ($listings as $bh): ?>
                                     <div class="result-card">
-                                        <div class="res-image" style="background-image: url('../../uploads/listings/<?php echo basename($row['image_path'] ?? 'default.jpg'); ?>');"></div>
+                                        <div class="res-image" style="background-image: url('../../uploads/listings/<?= !empty($bh['main_image']) ? $bh['main_image'] : 'default.jpg' ?>');"></div>
                                         <div class="res-info">
-                                            <h3><?php echo htmlspecialchars($row['title']); ?></h3>
-                                            <p class="res-price">₱<?php echo number_format($row['monthly_rent'], 2); ?> / month</p>
-                                            <p class="res-loc">📍 <?php echo htmlspecialchars($row['bh_address']); ?></p>
+                                            <h3><?= htmlspecialchars($bh['title']) ?></h3>
+                                            <p class="res-price">₱<?= number_format($bh['monthly_rent'], 2) ?> / month</p>
+                                            <p class="res-loc">📍 <?= htmlspecialchars($bh['bh_address']) ?></p>
                                             <div class="res-stats">
-                                                <span>⭐ <?php echo htmlspecialchars($row['roomtype']); ?></span>
-                                                <span class="availability <?php echo ($row['available_rooms'] <= 0) ? 'full' : ''; ?>">
-                                                    <?php echo ($row['available_rooms'] <= 0) ? 'Full' : $row['available_rooms'] . ' Rooms left'; ?>
-                                                </span>
+                                                <span class="availability"><?= $bh['available_rooms'] ?> Rooms left</span>
+                                                <button type="button" class="btn-view" onclick="window.location.href='view_listing.php?id=<?= $bh['bh_id'] ?>'">View Info</button>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <div style="padding: 20px; color: #666;">No results found matching your criteria.</div>
+                                <p style="grid-column: 1/-1; text-align:center; padding: 50px;">No boarding houses match your criteria.</p>
                             <?php endif; ?>
                         </div>
                     </main>
@@ -171,13 +185,5 @@ try {
         </div>
     </div>
 
-<script>
-        // Logout Function
-        function handleLogout() {
-            if(confirm("Log out of UEP DormDash?")) {
-                window.location.href = 'logout.php';
-            }
-        }
-</script>
 </body>
 </html>
