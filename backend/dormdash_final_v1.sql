@@ -341,3 +341,12 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- First, drop the current strict constraint
+ALTER TABLE bh_reservations DROP FOREIGN KEY bh_reservations_ibfk_2;
+
+-- Re-add it with CASCADE instruction
+ALTER TABLE bh_reservations 
+ADD CONSTRAINT bh_reservations_ibfk_2 
+FOREIGN KEY (bh_id) REFERENCES bh_listing(bh_id) 
+ON DELETE CASCADE;
