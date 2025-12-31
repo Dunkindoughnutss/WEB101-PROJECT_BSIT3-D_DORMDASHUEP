@@ -2,7 +2,7 @@ WEB101 – Project (BSIT 3D) – UEP DormDash
 
 Welcome to our repository for Web Systems 101.
 
-Hello and welcome, Sir Tomas Paolo Alburan Echaluce!
+Hello and welcome, Sir Tomas Paolo Alburan Echaluce and Sir Ralph Michael Edralin!
 This repository contains all project files and documentation for our DormDash UEP web application.
 
 Project Team:
@@ -13,11 +13,11 @@ Mara Grace D. Mendez
 Melchizedek M. Cupido
 
 
-Course: Web Systems and Technologies
+Course: Web Systems and Technologies / System Integration and Architecture
 University of Eastern Philippines – College of Science
 
 
-Sir, this repository will contain everything related to the development of our project UEP DormDash.
+Great educators of ours, this repository will contain everything related to the development of our project UEP DormDash.
 We organized the repository into clear sections to ensure easy navigation and proper project management throughout the development process.
 
 
